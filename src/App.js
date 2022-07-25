@@ -2,23 +2,35 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 
-const INITIAL_STATE = {
-  nameInput: '',
-  description: '',
-  attr1: 0,
-  attr2: 0,
-  attr3: 0,
-  image: '',
-  rarity: '',
-  trunfo: false,
-  isDisable: true,
-};
+// const INITIAL_STATE = {
+//   nameInput: '',
+//   description: '',
+//   attr1: 0,
+//   attr2: 0,
+//   attr3: 0,
+//   image: '',
+//   rarity: '',
+//   trunfo: false,
+//   isDisable: true,
+//   allCards: [],
+// };
 
 class App extends React.Component {
   constructor() {
     super();
 
-    this.state = INITIAL_STATE;
+    this.state = {
+      allCards: [],
+      nameInput: '',
+      description: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      image: '',
+      rarity: '',
+      trunfo: false,
+      isDisable: true,
+    };
   }
 
   checkButtonNumber = () => {
@@ -64,6 +76,22 @@ class App extends React.Component {
     });
   };
 
+  onSaveButtonClick = () => {
+    const { state } = this;
+    this.setState((prevState) => ({
+      allCards: [...prevState.allCards, state],
+      nameInput: '',
+      description: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      image: '',
+      rarity: '',
+      trunfo: false,
+      isDisable: true,
+    }));
+  }
+
   render() {
     const {
       nameInput,
@@ -90,6 +118,7 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isDisable }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ nameInput }

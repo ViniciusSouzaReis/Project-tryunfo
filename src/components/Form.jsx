@@ -45,6 +45,7 @@ class Form extends React.Component {
           Primeiro Atributo da carta:
           <input
             data-testid="attr1-input"
+            min={ 0 }
             type="number"
             id="card-att1"
             name="attr1"
@@ -57,6 +58,7 @@ class Form extends React.Component {
           <input
             data-testid="attr2-input"
             type="number"
+            min={ 0 }
             name="attr2"
             id="card-att2"
             value={ cardAttr2 }
@@ -68,6 +70,7 @@ class Form extends React.Component {
           <input
             data-testid="attr3-input"
             type="number"
+            min={ 0 }
             name="attr3"
             id="card-att3"
             value={ cardAttr3 }
