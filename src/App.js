@@ -105,6 +105,7 @@ class App extends React.Component {
 
   render() {
     const {
+      allCards,
       nameInput,
       description,
       attr1,
@@ -143,6 +144,22 @@ class App extends React.Component {
           cardRare={ rarity }
           cardTrunfo={ trunfo }
         />
+        { allCards.map((element) => (
+          <div key={ element.nameInput }>
+            All cards:
+            <Card
+              key={ element.nameInput }
+              cardName={ element.nameInput }
+              cardDescription={ element.description }
+              cardAttr1={ element.attr1 }
+              cardAttr2={ element.attr2 }
+              cardAttr3={ element.attr3 }
+              cardImage={ element.image }
+              cardRare={ element.rarity }
+              cardTrunfo={ element.trunfo }
+            />
+          </div>
+        ))}
       </div>
     );
   }
