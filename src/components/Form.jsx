@@ -19,6 +19,7 @@ class Form extends React.Component {
     } = this.props;
     return (
       <form>
+        {hasTrunfo}
         <label htmlFor="name-input">
           Nome da carta:
           <input
