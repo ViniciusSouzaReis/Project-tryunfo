@@ -64,7 +64,15 @@ class App extends React.Component {
     });
   };
 
-  onSaveButtonClick = () => {
+  checkHasTrunfo = () => {
+    const { trunfo } = this.state;
+    this.setState(
+      trunfo ? { hasTrunfo: true } : { hasTrunfo: false },
+    );
+  }
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
     const { nameInput,
       description,
       attr1,
@@ -98,7 +106,7 @@ class App extends React.Component {
       image: '',
       rarity: '',
       trunfo: false,
-      hasTrunfo: true,
+      hasTrunfo: this.checkHasTrunfo(),
       isDisable: true,
     }));
   }
@@ -144,11 +152,12 @@ class App extends React.Component {
           cardRare={ rarity }
           cardTrunfo={ trunfo }
         />
+        <h2>Cartas criadas:</h2>
         { allCards.map((element) => (
           <div key={ element.nameInput }>
-            All cards:
             <Card
               key={ element.nameInput }
+              className={ element.nameInput }
               cardName={ element.nameInput }
               cardDescription={ element.description }
               cardAttr1={ element.attr1 }
@@ -158,6 +167,14 @@ class App extends React.Component {
               cardRare={ element.rarity }
               cardTrunfo={ element.trunfo }
             />
+            <button
+              type="button"
+              className={ element.nameInput }
+              onClick={ () => element.remove() }
+              data-testid="delete-button"
+            >
+              Excluir
+            </button>
           </div>
         ))}
       </div>
